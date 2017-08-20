@@ -1,10 +1,15 @@
 <template>
   <div class="m-header">
-    <div class="icon"></div>
+    <div class="icon">
+      <i class="icon-theme"></i>
+    </div>
     <h1 class="text">Music</h1>
-    <!-- <router-link tag="div" class="mine" to="/user">
+     <!-- <router-link tag="div" class="mine" to="/user">
       <i class="icon-mine"></i>
-    </router-link> -->
+    </router-link>  -->
+    <router-link tag="div" class="search" to="/search">
+        <i class="icon-search"></i>
+    </router-link>
   </div>
 </template>
 
@@ -30,20 +35,28 @@
       width: 30px
       height: 32px
       margin-right: 9px
-      bg-image('logo')
       background-size: 30px 32px
+      .icon-theme
+        font-size:$font-theme
+        color:$color-text
     .text
       display: inline-block
       vertical-align: top
       line-height: 44px
       font-size: $font-size-large
-    .mine
+    .search
       position: absolute
       top: 0
       right: 0
-      .icon-mine
-        display: block
-        padding: 12px
-        font-size: 20px
-        color: $color-theme
+      height: 44px
+      width: 44px
+      text-align: center
+      line-height: 44px
+      .icon-search
+        height: 44px
+        width:44px
+        line-height:44px
+        text-align:center
+        font-size:$font-search
+        color:$color-text
 </style>

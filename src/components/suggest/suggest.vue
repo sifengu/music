@@ -9,7 +9,7 @@
           <p class="text" v-html="getDisplayName(item)"></p>
         </div>
       </li>
-      <loading v-show="more" title=""></loading>
+      <loading v-show="more&&query" title=""></loading>
     </ul>
     <div v-show="!more && !result.length && query" class="no-result-wrapper">未找到与"{{query}}"相关的内容</div>
   </Scroll>

@@ -21,6 +21,8 @@ export const topList = state => state.topList;
 
 export const searchHistory = state => state.searchHistory
 
+export const playHistory = state => state.playHistory
+
 // 计算
 // 当前歌曲
 export const currentSong = (state) => {

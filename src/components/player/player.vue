@@ -55,8 +55,8 @@
             <div class="icon i-right" :class="disableCls">
               <i @click="nextSong" class="icon-next"></i>
             </div>
-            <div class="icon i-right">
-              <i class="icon icon-favorite" ></i>
+            <div class="icon i-right" @click="showPlaylist">
+              <i class="icon icon-playlist" ></i>
             </div>
           </div>
         </div>
@@ -95,16 +95,18 @@
   </div> 
 </template> 
 <script>
-import {mapGetters, mapMutations} from 'vuex';
+import {mapGetters, mapMutations, mapActions} from 'vuex';
 import ProgressBar from '../../base/progress-bar/progress-bar'
 import ProgressCircle from '../../base/progress-circle/progress-circle'
 import {playMode} from '../../common/js/config.js'
-import {shuffle} from '../../common/js/util.js'
+// import {shuffle} from '../../common/js/util.js'
 import Lyric from '../../common/js/lyric.js'
 import Scroll from '../../base/scroll/scroll'
 import PlayList from '../../components/playlist/playlist'
+import {playerMixin} from '../../common/js/mixin.js'
 
   export default {
+    mixins: [playerMixin],
     data() {
       return {
         songReady: false,
@@ -149,26 +151,26 @@ import PlayList from '../../components/playlist/playlist'
         return num
       },
       // 播放模式
-      changeMode() {
-        const mode = (this.mode + 1) % 3;
-        this.setPlayMode(mode)
-        // console.log(this.mode)
-        let list = null;
-        if(mode === playMode.random) {
-          list = shuffle(this.sequenceList)
-        }else{
-          list = this.sequenceList
-        }
-        // console.log(this.currentSong)
-        this.resetCurrentIndex(list)
-        this.setPlayList(list)
-      },
-      resetCurrentIndex(list) {
-        let index = list.findIndex((item) => {
-          return item.id === this.currentSong.id
-        })
-        this.setCurrentIndex(index)
-      },
+      // changeMode() {
+      //   const mode = (this.mode + 1) % 3;
+      //   this.setPlayMode(mode)
+      //   // console.log(this.mode)
+      //   let list = null;
+      //   if(mode === playMode.random) {
+      //     list = shuffle(this.sequenceList)
+      //   }else{
+      //     list = this.sequenceList
+      //   }
+      //   // console.log(this.currentSong)
+      //   this.resetCurrentIndex(list)
+      //   this.setPlayList(list)
+      // },
+      // resetCurrentIndex(list) {
+      //   let index = list.findIndex((item) => {
+      //     return item.id === this.currentSong.id
+      //   })
+      //   this.setCurrentIndex(index)
+      // },
       // 自动播放下一首
       end() {
         if(this.mode === playMode.loop) {
@@ -275,22 +277,26 @@ import PlayList from '../../components/playlist/playlist'
       },
       ready() {
         this.songReady = true;
+        this.savePlayHistory(this.currentSong)
       },
       error() {
         this.songReady = true;
       },
       ...mapMutations({
-        setFullScreen: 'SET_FULL_SCREEN',
-        setPlayingState: 'SET_PLAYING_STATE',
-        setCurrentIndex: 'SET_CURRENT_INDEX',
-        setPlayMode: 'SET_PLAY_MODE',
-        setPlayList: 'SET_PLAYLIST'
-      })
+        setFullScreen: 'SET_FULL_SCREEN'
+        // setPlayingState: 'SET_PLAYING_STATE',
+        // setCurrentIndex: 'SET_CURRENT_INDEX',
+        // setPlayMode: 'SET_PLAY_MODE',
+        // setPlayList: 'SET_PLAYLIST'
+      }),
+      ...mapActions([
+        'savePlayHistory'
+      ])
     },
     computed: {
-      iconMode() {
-        return this.mode === playMode.sequence ? 'icon-sequence' : this.mode === playMode.loop ? 'icon-loop' : 'icon-random'
-      },
+      // iconMode() {
+      //   return this.mode === playMode.sequence ? 'icon-sequence' : this.mode === playMode.loop ? 'icon-loop' : 'icon-random'
+      // },
       cdCls() {
         return this.playing ? 'play' : 'play pause'
       },
@@ -309,12 +315,12 @@ import PlayList from '../../components/playlist/playlist'
       },
       ...mapGetters([
         'fullScreen',
-        'playlist',
-        'currentSong',
+        // 'playlist',
+        // 'currentSong',
         'playing',
-        'currentIndex',
-        'mode',
-        'sequenceList'
+        'currentIndex'
+        // 'mode',
+        // 'sequenceList'
       ])
     },
     watch: {
@@ -393,7 +399,6 @@ import PlayList from '../../components/playlist/playlist'
             padding: 9px
             font-size: $font-size-large-x
             color: $color-text
-            transform: rotate(-90deg)
         .title
           width: 70%
           margin: 0 auto

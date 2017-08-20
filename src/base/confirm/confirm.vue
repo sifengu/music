@@ -5,8 +5,8 @@
         <div class="confirm-content">
           <p class="text">{{text}}</p>
           <div class="operate">
-            <div class="operate-btn left" @click="confirm">确定</div>
-            <div class="operate-btn" @click="cancel">取消</div>
+            <div class="operate-btn left" @click="cancel">取消</div>
+            <div class="operate-btn" @click="confirm">清空</div>
           </div>
         </div>
       </div>
@@ -69,27 +69,27 @@
       z-index: 999
       .confirm-content
         width: 270px
-        border-radius: 13px
+        border-radius: 2px
         background: $color-highlight-background
+        box-shadow:7px 12px 17px $color-text-d
         .text
-          padding: 19px 15px
+          padding: 15px 15px 0
           line-height: 22px
-          text-align: center
-          font-size: $font-size-large
+          font-size: $font-size-medium
           color: $color-text-l
         .operate
+          margin-left:50%
+          width: 50%
+          height: 56px
           display: flex
           align-items: center
           text-align: center
-          font-size: $font-size-large
+          font-size: $font-size-small
+          color: $color-play
           .operate-btn
             flex: 1
             line-height: 22px
             padding: 10px 0
-            border-top: 1px solid $color-background-d
-            color: $color-text-d
-            &.left
-              border-right: 1px solid $color-background-d
 
   @keyframes confirm-fadein
     0%

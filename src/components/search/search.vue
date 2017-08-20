@@ -95,53 +95,6 @@
         'clearSearchHistory'
       ])
     },
-  //   mixins: [playlistMixin, searchMixin],
-  //   data() {
-  //     return {
-  //       hotKey: []
-  //     }
-  //   },
-  //   computed: {
-  //     shortcut() {
-  //       return this.hotKey.concat(this.searchHistory)
-  //     }
-  //   },
-  //   created() {
-  //     this._getHotKey()
-  //   },
-  //   methods: {
-  //     handlePlaylist(playlist) {
-  //       const bottom = playlist.length > 0 ? '60px' : ''
-
-  //       this.$refs.searchResult.style.bottom = bottom
-  //       this.$refs.suggest.refresh()
-
-  //       this.$refs.shortcutWrapper.style.bottom = bottom
-  //       this.$refs.shortcut.refresh()
-  //     },
-  //     showConfirm() {
-  //       this.$refs.confirm.show()
-  //     },
-  //     _getHotKey() {
-  //       getHotKey().then((res) => {
-  //         if (res.code === ERR_OK) {
-  //           this.hotKey = res.data.hotkey.slice(0, 10)
-  //         }
-  //       })
-  //     },
-  //     ...mapActions([
-  //       'clearSearchHistory'
-  //     ])
-  //   },
-  //   watch: {
-  //     query(newQuery) {
-  //       if (!newQuery) {
-  //         setTimeout(() => {
-  //           this.$refs.shortcut.refresh()
-  //         }, 20)
-  //       }
-  //     }
-  //   },
     components: {
       SearchBox,
       Confirm,
@@ -155,6 +108,11 @@
    @import "../../common/stylus/mixin" 
 
   .search
+    position:fixed
+    top:0
+    height:50px
+    width:100%
+    background: $color-background-t-
     .search-box-wrapper
       margin: 20px
     .shortcut-wrapper
