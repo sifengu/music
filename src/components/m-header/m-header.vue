@@ -52,11 +52,12 @@
       width: 44px
       text-align: center
       line-height: 44px
+      background: $color-theme
       .icon-search
         height: 44px
         width:44px
         line-height:44px
         text-align:center
-        font-size:$font-search
+        font-size:$font-size-medium-x
         color:$color-text
 </style>

@@ -18,7 +18,9 @@
             </slider>
           </div>
           <div class="recommend-list">
-            <h1 class="list-title">推荐歌单</h1>
+            <h1 class="list-title"><span class="now">| </span>推荐歌单
+              <i class="icon-right"></i>
+            </h1>
             <ul>
               <li @click="selectItem(item)" v-for="item in discList" class="item ">
                 <div class="icon">
@@ -131,9 +133,11 @@
         .list-title
           height: 65px
           line-height: 65px
-          text-align: center
+          // text-align: center
           font-size: $font-size-medium
-          color: $color-theme
+          color: $color-text-d_
+          .now
+            color:$color-theme
         .item
           display: flex
           box-sizing: border-box

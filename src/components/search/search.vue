@@ -110,14 +110,15 @@
   .search
     position:fixed
     top:0
-    height:50px
+    height:100%
     width:100%
-    background: $color-background-t-
+    background: $color-background
     .search-box-wrapper
-      margin: 20px
+      height:50px
+      background: $color-background-t-
     .shortcut-wrapper
       position: fixed
-      top: 178px
+      top: 75px
       bottom: 0
       width: 100%
       .shortcut
@@ -174,7 +175,7 @@
     .search-result
       position: fixed
       width: 100%
-      top: 178px
+      top: 65px
       bottom: 0
       z-index: -1
 </style>

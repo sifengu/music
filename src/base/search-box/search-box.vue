@@ -1,6 +1,6 @@
 <template>
   <div class="search-box">
-    <i class="icon-search"></i>
+    <i class="icon-back"  @click="back"></i>
     <input class="box" ref="input" v-model="query" :placeholder="placeholder"/>
     <i @click="clear" v-show="query" class="icon-delete"></i>
   </div>
@@ -31,6 +31,9 @@
       },
       blur() {
         this.$refs.input.blur()
+      },
+      back() {
+        this.$router.back()
       }
     },
     created() {
@@ -38,33 +41,6 @@
         this.$emit('query', newQ)
       }, 200))
     }
-    // props: {
-    //   placeholder: {
-    //     type: String,
-    //     default: '搜索歌曲、歌手'
-    //   }
-    // },
-    // data() {
-    //   return {
-    //     query: ''
-    //   }
-    // },
-    // methods: {
-    //   clear() {
-    //     this.query = ''
-    //   },
-    //   setQuery(query) {
-    //     this.query = query
-    //   },
-    //   blur() {
-    //     this.$refs.query.blur()
-    //   }
-    // },
-    // created() {
-    //   this.$watch('query', debounce((newQuery) => {
-    //     this.$emit('query', newQuery)
-    //   }, 200))
-    // }
   }
 </script>
 
@@ -78,17 +54,21 @@
     width: 100%
     padding: 0 6px
     height: 40px
-    background: $color-highlight-background
+    //background: $color-background-t-
     border-radius: 6px
-    .icon-search
+    .icon-back, .icon-delete
       font-size: 24px
-      color: $color-background
     .box
       flex: 1
       margin: 0 5px
-      line-height: 18px
-      background: $color-highlight-background
-      font-size: $font-size-medium
+      color:$color-text
+      height:44px
+      background:$color-background-t-
+      padding-left:5px
+      line-height: 44px
+      font-size: $font-size-medium-x
+      appearance: none
+      border-bottom:1px solid $color-text
       &::placeholder
         color: $color-text-d
     .icon-dismiss

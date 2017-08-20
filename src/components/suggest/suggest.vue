@@ -1,12 +1,13 @@
 <template>
   <Scroll class="suggest" ref="suggest" :data="result" :beforeScroll="beforeScroll" @beforeScroll="pulldown"  @scrollToEnd="searchMore" :pullup="pullup">
     <ul class="suggest-list">
-      <li class="suggest-item" @click="selectItem(item)" v-for="item in result">
-        <div class="icon">
+      <li class="suggest-item border-1px" @click="selectItem(item)" v-for="item in result">
+        <!-- <div class="icon">
           <i :class="getIconCls(item)"></i>
-        </div>
+        </div> -->
         <div class="name">
-          <p class="text" v-html="getDisplayName(item)"></p>
+          <p class="text" v-html="item.name"></p>
+          <p class="singer" ><span v-html="item.singer"></span> - <span v-html="item.album"></span></p>
         </div>
       </li>
       <loading v-show="more&&query" title=""></loading>
@@ -111,13 +112,13 @@
           return 'icon-music'
         }
       },
-      getDisplayName(item) {
-        if(item.type === TYPE_SINGER) {
-          return item.singername
-        }else{
-          return `${item.name}-${item.singer}`
-        }
-      },
+      // getDisplayName(item) {
+      //   if(item.type === TYPE_SINGER) {
+      //     return item.singername
+      //   }else{
+      //     return `${item.name}-${item.singer}`
+      //   }
+      // },
       pulldown() {
         this.$emit('polldown')
       },
@@ -129,126 +130,6 @@
       Scroll,
       Loading
     }
-    // props: {
-  //     showSinger: {
-  //       type: Boolean,
-  //       default: true
-  //     },
-  //     query: {
-  //       type: String,
-  //       default: ''
-  //     }
-  //   },
-  //   data() {
-  //     return {
-  //       page: 1,
-  //       pullup: true,
-  //       beforeScroll: true,
-  //       hasMore: true,
-  //       result: []
-  //     }
-  //   },
-  //   methods: {
-  //     refresh() {
-  //       this.$refs.suggest.refresh()
-  //     },
-  //     search() {
-  //       this.page = 1
-  //       this.hasMore = true
-  //       this.$refs.suggest.scrollTo(0, 0)
-        // search(this.query, this.page, this.showSinger, perpage).then((res) => {
-        //   if (res.code === ERR_OK) {
-        //     this.result = this._genResult(res.data)
-        //     this._checkMore(res.data)
-        //   }
-        // })
-  //     },
-  //     searchMore() {
-  //       if (!this.hasMore) {
-  //         return
-  //       }
-  //       this.page++
-  //       search(this.query, this.page, this.showSinger, perpage).then((res) => {
-  //         if (res.code === ERR_OK) {
-  //           this.result = this.result.concat(this._genResult(res.data))
-  //           this._checkMore(res.data)
-  //         }
-  //       })
-  //     },
-  //     listScroll() {
-  //       this.$emit('listScroll')
-  //     },
-  //     selectItem(item) {
-  //       if (item.type === TYPE_SINGER) {
-  //         const singer = new Singer({
-  //           id: item.singermid,
-  //           name: item.singername
-  //         })
-  //         this.$router.push({
-  //           path: `/search/${singer.id}`
-  //         })
-  //         this.setSinger(singer)
-  //       } else {
-  //         this.insertSong(item)
-  //       }
-  //       this.$emit('select', item)
-  //     },
-  //     getDisplayName(item) {
-  //       if (item.type === TYPE_SINGER) {
-  //         return item.singername
-  //       } else {
-  //         return `${item.name}-${item.singer}`
-  //       }
-  //     },
-  //     getIconCls(item) {
-  //       if (item.type === TYPE_SINGER) {
-  //         return 'icon-mine'
-  //       } else {
-  //         return 'icon-music'
-  //       }
-  //     },
-  //     _genResult(data) {
-  //       let ret = []
-  //       if (data.zhida && data.zhida.singerid) {
-  //         ret.push({...data.zhida, ...{type: TYPE_SINGER}})
-  //       }
-  //       if (data.song) {
-  //         ret = ret.concat(this._normalizeSongs(data.song.list))
-  //       }
-  //       return ret
-  //     },
-  //     _normalizeSongs(list) {
-  //       let ret = []
-  //       list.forEach((musicData) => {
-  //         if (musicData.songid && musicData.albummid) {
-  //           ret.push(createSong(musicData))
-  //         }
-  //       })
-  //       return ret
-  //     },
-  //     _checkMore(data) {
-  //       const song = data.song
-  //       if (!song.list.length || (song.curnum + song.curpage * perpage) > song.totalnum) {
-  //         this.hasMore = false
-  //       }
-  //     },
-  //     ...mapMutations({
-  //       setSinger: 'SET_SINGER'
-  //     }),
-  //     ...mapActions([
-  //       'insertSong'
-  //     ])
-  //   },
-  //   watch: {
-  //     query(newQuery) {
-  //       this.search(newQuery)
-  //     }
-  //   },
-  //   components: {
-  //     Scroll,
-  //     Loading,
-  //     NoResult
-  //   }
   }
 </script>
 
@@ -260,11 +141,13 @@
     height: 100%
     overflow: hidden
     .suggest-list
-      padding: 0 30px
+      padding: 2px 10px
       .suggest-item
         display: flex
         align-items: center
-        padding-bottom: 20px
+        padding: 10px 2px
+        margin-bottom: 10px
+        border-1px(#222)
       .icon
         flex: 0 0 30px
         width: 30px
@@ -278,6 +161,12 @@
         overflow: hidden
         .text
           no-wrap()
+          font-size: $font-size-medium
+          color:$color-text-d_
+        .singer
+          no-wrap()
+          font-size:$font-size-small
+          margin-top:5px
     .no-result-wrapper
       position: absolute
       width: 100%

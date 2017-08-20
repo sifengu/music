@@ -4,7 +4,7 @@
       <ul>
         <li class="item"  v-for="item in topList" @click="selectItem(item)">
           <div class="icon">
-            <img width="100" height="100" v-lazy="item.picUrl"/>
+            <img width="110" height="110" v-lazy="item.picUrl"/>
           </div>
           <ul class="songlist">
             <li class="song" v-for="(song, index) in item.songList">
@@ -94,7 +94,7 @@
         display: flex
         margin: 0 20px
         padding-top: 20px
-        height: 100px
+        height: 110px
         &:last-child
           padding-bottom: 20px
         .icon
@@ -107,9 +107,9 @@
           flex-direction: column
           justify-content: center
           padding: 0 20px
-          height: 100px
+          height: 110px
           overflow: hidden
-          background: $color-highlight-background
+          // background: $color-highlight-background
           color: $color-text-d
           font-size: $font-size-small
           .song
