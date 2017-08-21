@@ -1,6 +1,6 @@
 # music-server
 
-预览地址：music.thzheng.cc
+预览地址：http://music.thzheng.cc
 
 > A Vue.js project
 
