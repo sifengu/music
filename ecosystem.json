@@ -2,7 +2,7 @@
     "apps": [
         {
             "name": "music",
-            "script":"index.html",
+            "script":"prod.server.js",
             "env": {
                 "COMMON_VARIABLE": "true"
             },
