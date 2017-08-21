@@ -2,7 +2,7 @@
 
 预览地址：http://music.thzheng.cc
 
-预览画面
+chrome调试模式(iphone6)下预览画面
 
 #<img src="https://github.com/sifengu/photowrap/blob/master/photo/img/dist.png" width="225" height="400" alt="歌单"/>
 <img src="https://github.com/sifengu/photowrap/blob/master/photo/img/singer.png" width="225" height="400" alt="歌手"/>
