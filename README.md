@@ -1,5 +1,7 @@
 # music-server
 
+预览地址：music.thzheng.cc
+
 > A Vue.js project
 
 ## Build Setup
