@@ -2,6 +2,19 @@
 
 预览地址：http://music.thzheng.cc
 
+预览画面
+
+#<img src="https://github.com/sifengu/music/blob/master/img/dist.png" width="225" height="400" alt="歌单"/>
+<img src="https://github.com/sifengu/music/blob/master/img/singer.png" width="225" height="400" alt="歌手"/>
+<img src="https://github.com/sifengu/music/blob/master/img/recommend.png" width="225" height="400" alt="推荐"/>
+
+#<img src="https://github.com/sifengu/music/blob/master/img/rank.png" width="225" height="400" alt="排行"/>
+<img src="https://github.com/sifengu/music/blob/master/img/player.png" width="225" height="400" alt="player"/>
+<img src="https://github.com/sifengu/music/blob/master/img/lyric.png" width="225" height="400" alt="lyric"/>
+
+#<img src="https://github.com/sifengu/music/blob/master/img/search.png" width="225" height="400" alt="search"/>
+<img src="https://github.com/sifengu/music/blob/master/img/result.png" width="225" height="400" alt="result"/>
+  
 > A Vue.js project
 
 ## Build Setup
