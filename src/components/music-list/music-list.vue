@@ -13,7 +13,7 @@
         <div class="play-wrapper border-1px">
         <div class="play" v-show="songs.length>0" ref="backicon" @click="play">
           <i class="icon-play"></i>
-          <span class="text">播放全部( 共{{songs.length}}首 )</span>
+          <span class="text">播放全部( 共{{songs.length}}�?)</span>
         </div>
       </div>
        <div class="song-list-wrapper">
@@ -197,7 +197,7 @@
       .desctitle
         position: absolute
         bottom: 0
-        padding: 0 10px
+        padding: 0 40px
         z-index: 40
         width: 80%
         no-wrap()
