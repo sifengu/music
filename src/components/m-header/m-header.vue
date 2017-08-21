@@ -4,9 +4,6 @@
       <i class="icon-theme"></i>
     </div>
     <h1 class="text">Music</h1>
-     <!-- <router-link tag="div" class="mine" to="/user">
-      <i class="icon-mine"></i>
-    </router-link>  -->
     <router-link tag="div" class="search" to="/search">
         <i class="icon-search"></i>
     </router-link>

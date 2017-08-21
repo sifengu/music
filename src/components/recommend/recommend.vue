@@ -24,7 +24,7 @@
             <ul>
               <li @click="selectItem(item)" v-for="item in discList" class="item ">
                 <div class="icon">
-                  <img v-lazy="item.imgurl" alt="" windth="60" height="60">
+                  <img v-lazy="item.imgurl" alt="">
                 </div>
                 <div class="text border-1px">
                   <h2 class="name" v-html="item.creator.name"></h2>
@@ -130,6 +130,8 @@
         width: 100%
         overflow: hidden
       .recommend-list
+        ul
+          column-count: 2
         .list-title
           height: 65px
           line-height: 65px
@@ -141,14 +143,17 @@
         .item
           display: flex
           box-sizing: border-box
+          position:relative
           /* 垂直居中 */
           align-items: center
-          padding: 0 20px 20px 20px
-          
+          padding-bottom:20px
+          flex-direction: column
+          -webkit-column-break-inside: avoid
           .icon
-            flex: 0 0 60px
-            width: 60px
-            padding-right: 20px
+            img
+              width:100%
+              height:100%
+              filter: grayscale(0.2)
           .text
             display: flex
             flex-direction: column
@@ -157,12 +162,16 @@
             line-height: 20px
             /* border-1px(#222, after) */
             overflow: hidden
-            font-size: $font-size-medium
+            font-size: $font-size-small
             .name
-              margin-bottom: 10px
-              color: $color-text-d_
+              color: #fff
+              position: absolute
+              bottom: 70px
+              left: 10px
+              color: $color-text
             .desc
-              color: $color-text-d
+              color: $color-text-d_
+              height: 40px
       .loading-container
         position: absolute
         width: 100%

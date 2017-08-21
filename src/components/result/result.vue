@@ -6,12 +6,7 @@
 <script>
     import SearchBox from '../../base/search-box/search-box.vue'
     import SongList from '../../base/song-list/song-list.vue'
-    // import Scroll from '../../base/scroll/scroll'
-    // import Loading from '../../base/loading/loading'
-    // import NoResult from 'base/no-result/no-result'
-    // import {search} from '../../api/search'
-    // import {ERR_OK} from '../../api/config'
-    // import {createSong} from '../../common/js/song'
+
     export default {
         props: {
             songs: {

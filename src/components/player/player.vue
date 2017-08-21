@@ -3,6 +3,7 @@
       <transition name="normal" > 
       <div class="normal-player" v-show="fullScreen">
         <div class="background">
+          <div class="mk"></div>
           <img width="100%" height="100%" :src="currentSong.image">
         </div>
         <div class="top">
@@ -89,9 +90,6 @@
      </transition>
     <play-list ref="playlist"></play-list>
     <audio ref="audio" :src="currentSong.url" @timeupdate="updateTime" @canplay="ready" @error="error" @ended="end"></audio>
-    <!-- <playlist ref="playlist"></playlist>
-    <audio ref="audio" :src="currentSong.url" @play="ready" @error="error" @timeupdate="updateTime"
-           @ended="end"></audio> -->
   </div> 
 </template> 
 <script>
@@ -386,6 +384,11 @@ import {playerMixin} from '../../common/js/mixin.js'
         z-index: -1
         opacity: 0.6
         filter: blur(20px)
+        .mk
+          background: rgba(0,0,0,0.5)
+          position:fixed
+          width:100%
+          height:100%
       .top
         position: relative
         margin-bottom: 25px

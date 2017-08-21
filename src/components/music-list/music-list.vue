@@ -5,22 +5,25 @@
     
     <div class="bg-image" :style="bgStyle" ref="bgImage">
       <h1 class="desctitle" v-html="desctitle"></h1>
-      <div class="play-wrapper">
-        <div class="play" v-show="songs.length>0" ref="backicon" @click="play">
-          <i class="icon-play"></i>
-          <span class="text">全部播放</span>
-        </div>
-      </div>
       <div class="filter" ref="filter"></div>
     </div>
     <div class="bg-layer" ref="layer"></div>
     <scroll @scroll="scroll" :probe-type="probeType" :listen-scroll="listenScroll" :data="songs" class="list" ref="list">
-      <div class="song-list-wrapper">
+      <div>
+        <div class="play-wrapper border-1px">
+        <div class="play" v-show="songs.length>0" ref="backicon" @click="play">
+          <i class="icon-play"></i>
+          <span class="text">播放全部( 共{{songs.length}}首 )</span>
+        </div>
+      </div>
+       <div class="song-list-wrapper">
         <song-list :rank="rank" @select="selectItem" :songs="songs"></song-list>
       </div>
       <div class="loading-container" v-show="!songs.length">
         <loading></loading>
       </div>
+      </div>
+     
     </scroll>
   </div>
 </template>
@@ -193,7 +196,8 @@
       background-size: cover
       .desctitle
         position: absolute
-        bottom: 20px
+        bottom: 0
+        padding: 0 10px
         z-index: 40
         width: 80%
         no-wrap()
@@ -201,30 +205,6 @@
         line-height: 40px
         font-size: $font-size-medium-x
         color: $color-text
-      .play-wrapper
-        position: absolute
-        bottom: 20px
-        z-index: 50
-        width: 100%
-        .play
-          box-sizing: border-box
-          width: 135px
-          padding: 7px 0
-          margin: 0 auto
-          text-align: center
-          border: 1px solid $color-text
-          color: $color-text
-          border-radius: 100px
-          font-size: 0
-          .icon-play
-            display: inline-block
-            vertical-align: middle
-            margin-right: 6px
-            font-size: $font-size-medium-x
-          .text
-            display: inline-block
-            vertical-align: middle
-            font-size: $font-size-small
       .filter
         position: absolute
         top: 0
@@ -242,6 +222,24 @@
       bottom: 0
       width: 100%
       background: $color-background
+      .play-wrapper
+        width: 100%
+        border-1px($color-text-d)
+        height: 45px
+        line-height: 45px
+        margin-left: 20px
+        .play
+          box-sizing: border-box
+          padding: 0 7px
+          color: $color-text-d_
+          font-size: $font-size-medium
+          .icon-play
+            display: inline-block
+            vertical-align: middle
+            margin-right: 6px
+          .text
+            display: inline-block
+            vertical-align: middle
       .song-list-wrapper
         padding: 20px 30px
       .loading-container

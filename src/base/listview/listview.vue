@@ -202,10 +202,10 @@
         .avatar
           width: 50px
           height: 50px
-          border-radius: 50%
+          border-radius: 1px
         .name
           margin-left: 20px
-          color: $color-text-l
+          color: $color-text-d-
           font-size: $font-size-medium
           border-1px(#222)
           width: 60%
