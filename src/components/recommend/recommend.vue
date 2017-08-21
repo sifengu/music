@@ -131,7 +131,7 @@
         overflow: hidden
       .recommend-list
         ul
-          -mox-column-count: 2
+          -moz-column-count: 2
           column-count: 2
         .list-title
           height: 65px
