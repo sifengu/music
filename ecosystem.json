@@ -1,0 +1,28 @@
+{
+    "apps": [
+        {
+            "name": "music",
+            "script":"index.html",
+            "env": {
+                "COMMON_VARIABLE": "true"
+            },
+            "env_production": {
+                "NODE_ENV": "production"
+            }
+        }
+    ],
+    "deploy": {
+        "production": {
+            "user": "thzheng",
+            "host": ["120.77.169.232"],
+            "port": "8264",
+            "ref": "origin/master",
+            "repo": "git@github.com:sifengu/music.git",
+            "path": "/www/music/production",
+            "ssh_options": "StrictHostKeyChecking=no",
+            "env": {
+                "NODE_ENV": "production"
+            }
+        }
+    }
+}
